@@ -1,0 +1,91 @@
+/* Base reset */
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  padding-top: 70px; /* prevent overlap with navbar */
+  background: #111; /* Dark theme */
+  color: #eee;
+  min-height: 100vh;
+}
+
+/* Content container */
+.content {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+/* Heading */
+.content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideDown 1s ease;
+}
+
+/* Paragraphs */
+.content p {
+  margin-bottom: 15px;
+  color: #ccc;
+  font-size: 1.1rem;
+  animation: slideUp 1.2s ease;
+}
+
+/* Button-like link */
+.btn {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: white;
+  transform: translateY(-3px) scale(1.05);
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,119 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page background */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #111; /* dark theme */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 70px; /* prevent navbar overlap */
+}
+
+/* Container */
+.signup-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 1s ease;
+}
+
+/* Title */
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  background: linear-gradient(90deg, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Labels */
+.signup-form label {
+  display: block;
+  margin: 12px 0 5px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+/* Inputs */
+.signup-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.signup-form input:focus {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Button */
+.signup-form button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-form button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Login link under button */
+.login-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #bbb;
+}
+
+.login-link a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.login-link a:hover {
+  color: #0af;
+  border-bottom: 1px solid #0af;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

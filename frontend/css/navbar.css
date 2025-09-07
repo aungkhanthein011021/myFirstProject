@@ -1,0 +1,180 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open sans", sans-serif;
+  background: #111; /* black theme background */
+  color: white;
+  min-height: 200vh; /* so you can scroll */
+}
+
+/* Navbar (desktop + mobile) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+
+  /* Dark glass effect */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  color: white;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: navbarFadeIn 0.8s ease forwards;
+}
+
+@keyframes navbarFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #aaa;
+}
+
+.user-text {
+  color: #ffcc00;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+/* Overlay (mobile fullscreen menu) */
+.overlay {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Dark glass effect */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  transition: top 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.overlay.active {
+  top: 0;
+}
+
+.overlay ul {
+  list-style: none;
+  text-align: center;
+}
+
+.overlay ul li {
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.overlay ul li a {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.overlay ul li a:hover {
+  color: #aaa;
+}
+
+/* Animate items one by one */
+.overlay.active ul li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlay.active ul li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.overlay.active ul li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.overlay.active ul li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.overlay.active ul li:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.overlay.active ul li:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.overlay.active ul li:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}

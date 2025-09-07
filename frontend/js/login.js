@@ -1,0 +1,37 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    try {
+      const res = await fetch("http://localhost:3000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error || "Login failed");
+        return;
+      }
+
+      // Store user info in localStorage
+      localStorage.setItem("userId", data.id);
+      localStorage.setItem("username", data.name);
+
+      // Redirect to homepage
+      window.location.href = "index.html";
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+});

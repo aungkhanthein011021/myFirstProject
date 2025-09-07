@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Friendships
+  requestedFriendships Friendship[] @relation("Requester")
+  receivedFriendships  Friendship[] @relation("Addressee")
+
+  // Messages
+  sentMessages     Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+}
+
+model Friendship {
+  id          Int      @id @default(autoincrement())
+  requester   User     @relation("Requester", fields: [requesterId], references: [id])
+  requesterId Int
+  addressee   User     @relation("Addressee", fields: [addresseeId], references: [id])
+  addresseeId Int
+  status      String   // "pending", "accepted", "declined"
+  createdAt   DateTime @default(now())
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  sender     User     @relation("SentMessages", fields: [senderId], references: [id])
+  senderId   Int
+  receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  receiverId Int
+  content    String
+  createdAt  DateTime @default(now())
+}
