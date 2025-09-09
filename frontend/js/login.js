@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password").value.trim();
 
     try {
-      const res = await fetch(BASE_API + "/login", {
+      const res = await fetch(BASE_API + "users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
