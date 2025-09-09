@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
 
+  const BASE_API = "https://two-connect-backend.onrender.com";
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password").value.trim();
 
     try {
-      const res = await fetch("http://localhost:3000/users/login", {
+      const res = await fetch(BASE_API + "/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

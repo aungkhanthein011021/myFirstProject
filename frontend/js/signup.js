@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const password = document.getElementById("password");
   const confirmPassword = document.getElementById("confirm-password");
 
+  const BASE_API = "https://two-connect-backend.onrender.com";
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault(); // prevent form submission
 
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // Send data to backend API (adjust path if different)
-      const response = await fetch("http://localhost:3000/users", {
+      const response = await fetch(BASE_API + "/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

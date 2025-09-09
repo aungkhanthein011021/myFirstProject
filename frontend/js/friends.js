@@ -12,15 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const userId = localStorage.getItem("userId");
+
+  const BASE_API = "https://two-connect-backend.onrender.com";
+
   if (!userId) {
     window.location.href = "login.html";
     return;
   }
 
   try {
-    const response = await fetch(
-      `http://localhost:3000/friendships/${userId}/friends`
-    );
+    const response = await fetch(`${BASE_API}/friendships/${userId}/friends`);
     if (!response.ok) throw new Error("Failed to fetch friends");
 
     const friends = await response.json();

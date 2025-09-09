@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const friendId = parseInt(localStorage.getItem("chatFriendId"), 10);
   const friendName = localStorage.getItem("chatFriendName"); // still a string
 
+  const BASE_API = "https://two-connect-backend.onrender.com";
+
   if (!userId || !friendId) {
     alert("Missing user or friend ID. Please go back to the friends list.");
     window.location.href = "friends.html";
@@ -57,9 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Load messages
   async function loadMessages() {
     try {
-      const res = await fetch(
-        `http://localhost:3000/messages/${userId}/${friendId}`
-      );
+      const res = await fetch(`${BASE_API}/messages/${userId}/${friendId}`);
       if (!res.ok) throw new Error("Failed to fetch messages");
       const messages = await res.json();
 
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!content) return;
 
     try {
-      const res = await fetch("http://localhost:3000/messages", {
+      const res = await fetch(BASE_API + "/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
